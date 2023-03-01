@@ -14,7 +14,7 @@ export default function TwitterFollowCard({username = 'unknow', name}){
 
     const [buttonClassName, setButtonClassName] = useState(buttonClassNameDefault);
 
-    // next step -> improve logic handle events with functions.
+    // next step -> improve handle events logic with functions.
 
     const handleClick = () => {
         const newFollowing = !isFollowing;
