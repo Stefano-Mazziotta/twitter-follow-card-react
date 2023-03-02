@@ -30,7 +30,7 @@ export default function TwitterFollowCard({children, username = 'unknow', initia
             <aside>
                 <button className={buttonClassName} onClick={handleClick}>
                     <span className='tw-followCard-text'>{text}</span>
-                    <span className='tw-followCard-stopFollow'>Unfollow</span>
+                    <span className='tw-followCard-unfollow'>Unfollow</span>
                 </button>
             </aside>
         </article>        

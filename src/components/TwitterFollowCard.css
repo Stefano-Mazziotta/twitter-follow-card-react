@@ -66,11 +66,11 @@
     display: none;
   }
   
-  .tw-followCard-button.is-following:hover .tw-followCard-stopFollow {
+  .tw-followCard-button.is-following:hover .tw-followCard-unfollow {
     display: block;
   }
   
-  .tw-followCard-stopFollow {
+  .tw-followCard-unfollow {
     display: none;
   }
   
