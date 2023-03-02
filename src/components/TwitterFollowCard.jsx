@@ -1,53 +1,17 @@
 import { useState } from 'react';
 import './TwitterFollowCard.css';
 
-export default function TwitterFollowCard({username = 'unknow', name}){
+export default function TwitterFollowCard({children, username = 'unknow', initialIsFollowing }){
     
-    let [isFollowing, setIsFollowing] = useState(false);
-
-    const defaultText = isFollowing ? 'Following' : 'Follow';
-    const [text, setText] = useState(defaultText);
+    const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
+    const text = isFollowing ? 'Following' : 'Follow';    
     
-    const buttonClassNameDefault = isFollowing 
+    const buttonClassName = isFollowing 
         ? 'tw-followCard-button is-following'
         : 'tw-followCard-button';
 
-    const [buttonClassName, setButtonClassName] = useState(buttonClassNameDefault);
-
-    // next step -> improve handle events logic with functions.
-
     const handleClick = () => {
-        const newFollowing = !isFollowing;
-        setIsFollowing(newFollowing);
-
-        //create function -> getNewClass();
-        const newClass = 'tw-followCard-button'
-        setButtonClassName(newClass);   
-
-        //create function -> getNewText();
-        const newText = newFollowing ? 'Following' : 'Follow';
-        setText(newText);
-    }
-
-    const handleMouseEnter = () => {
-        
-        //create function -> getNewClass();
-        const newClass = isFollowing ? 'tw-followCard-button is-following red' : 'tw-followCard-button'
-        setButtonClassName(newClass);
-
-        //create function -> getNewText();
-        const newText = isFollowing ? 'Unfollow' : 'Follow';
-        setText(newText);
-    }
-
-    const handleMouseOut = () => {
-        //create function -> getNewClass();
-        const newClass = isFollowing ? 'tw-followCard-button is-following' : 'tw-followCard-button'
-        setButtonClassName(newClass)
-
-        //create function -> getNewText();
-        const newText = isFollowing ? 'Following' : 'Follow';
-        setText(newText);
+        setIsFollowing(!isFollowing);
     }
 
     return (
@@ -59,13 +23,14 @@ export default function TwitterFollowCard({username = 'unknow', name}){
                 alt="avatar" 
             />
             <div className='tw-followCard-info'>
-                <strong>{name}</strong>
+                <strong>{children}</strong>
                 <span className='tw-followCard-infoUserName'>@{username}</span>
             </div>
             </header>
             <aside>
-                <button className={buttonClassName} onMouseOut={handleMouseOut} onMouseEnter={handleMouseEnter} onClick={handleClick}>
-                    {text}
+                <button className={buttonClassName} onClick={handleClick}>
+                    <span className='tw-followCard-text'>{text}</span>
+                    <span className='tw-followCard-stopFollow'>Unfollow</span>
                 </button>
             </aside>
         </article>        

@@ -3,12 +3,43 @@ import TwitterFollowCard from './components/TwitterFollowCard'
 
 function App() {
   
+  const users = [
+    {
+      username: 'midudev',
+      name: 'Miguel Ángel Durán',
+      isFollowing: true
+    },
+    {
+      username: 'steffmzt',
+      name: 'Stefano Mazziotta',
+      isFollowing: false
+    },
+    {
+      username: 'hiimsteff',
+      name: 'Hi im steff',
+      isFollowing: true
+    },
+    {
+      username: 'lionelmessi',
+      name: 'Lionel Messi',
+      isFollowing: false
+    }
+  ]
+
   return (
     <div className="App">
       <div className='wrap-cards'>
-        <TwitterFollowCard username="steffmzt" name="Stefano Mazziotta" isFollowing={true} />
-        <TwitterFollowCard username="reddit" name="reddit official" isFollowing={false} />
-        <TwitterFollowCard username="leomessi" name="Lionel Messi" isFollowing={false} />
+        {
+          users.map( ({username, name, isFollowing}) => (
+            <TwitterFollowCard
+              key={username}
+              username={username}
+              initialIsFollowing={isFollowing}
+            >
+              {name}
+            </TwitterFollowCard>
+          ))
+        }        
       </div>
     </div>
   )
